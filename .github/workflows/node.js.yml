@@ -23,7 +23,7 @@ jobs:
 
   test:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
@@ -38,7 +38,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, and test
       run: |
-        npm install
+        npm ci
+        npm build
         npm test
       env:
         CI: true
